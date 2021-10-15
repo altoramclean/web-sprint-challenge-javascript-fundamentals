@@ -2,6 +2,10 @@
 /* 🚀🚀🚀🤓 Task 1: 🤓🚀🚀🚀 
 Study the code below and explain in your own words why nested function can access the variable internal. */
 
+const { Scope } = require("@babel/traverse");
+const { assertVoidTypeAnnotation } = require("@babel/types");
+const { formatPrettyObject } = require("jest-validate/build/utils");
+
 const external = "I'm outside the function";
 
 function myFunction() {
@@ -17,6 +21,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
+/* The nested function can access the variable internal because it is declared within the myFunction local Scope. nestedFunction is the inner function(child) so it will only be available inside of its parent"myFunction". */
 
 
 
@@ -27,11 +32,13 @@ myFunction();
     2. Use a counter to return the summation of that number. 
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
-
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
-  }
+function summation(num) {
+  let sum=0;
+   for(let i=num;i>=1;i--){
+      sum=i+sum;
+   }
+ return sum;
+   }
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -56,8 +63,14 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(array){
+    const displayNames = [];
+    array.forEach((element) => {
+      displayNames.push(
+        `name: ${element.animal_name}, scientific: ${element.scientific_name}`
+      );
+    });
+    return displayNames;
   }
   
 
